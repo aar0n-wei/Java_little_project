@@ -4,10 +4,10 @@ import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 
 public class Player extends KeyAdapter {
-    HeroPlane heroPlane;
+    GameFrame gameFrame;
 
-    public Player(HeroPlane heroPlane) {
-        this.heroPlane = heroPlane;
+    public Player(GameFrame gameFrame) {
+        this.gameFrame = gameFrame;
     }
 
     @Override
@@ -16,17 +16,19 @@ public class Player extends KeyAdapter {
         System.out.println(code);
         switch (code) {
             case 37:
-                heroPlane.left = true;
+                gameFrame.heroPlane.left = true;
                 break;
             case 38:
-                heroPlane.up = true;
+                gameFrame.heroPlane.up = true;
                 break;
             case 39:
-                heroPlane.right = true;
+                gameFrame.heroPlane.right = true;
                 break;
             case 40:
-                heroPlane.down = true;
+                gameFrame.heroPlane.down = true;
                 break;
+            case 66:
+                gameFrame.bullets.add(new Bullet(gameFrame.heroPlane.x,gameFrame.heroPlane.y));
         }
     }
 
@@ -35,16 +37,16 @@ public class Player extends KeyAdapter {
         int code = e.getKeyCode();
         switch (code) {
             case 37:
-                heroPlane.left = false;
+                gameFrame.heroPlane.left = false;
                 break;
             case 38:
-                heroPlane.up = false;
+                gameFrame.heroPlane.up = false;
                 break;
             case 39:
-                heroPlane.right = false;
+                gameFrame.heroPlane.right = false;
                 break;
             case 40:
-                heroPlane.down = false;
+                gameFrame.heroPlane.down = false;
                 break;
         }
     }
